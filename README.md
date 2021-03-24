@@ -1,9 +1,10 @@
 # strapi-next
 
 # Lounche backend
-cd strapy/
-yarn start
+- cd strapy/
+- yarn start
 
 # Lounche frontend
-cd frontend/
-yarn dev
+- cd frontend/
+- yarn dev
+
