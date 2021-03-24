@@ -1,0 +1,25 @@
+{
+  "name": "strapy-next",
+  "version": "1.0.0",
+  "description": "# Lounche backend - cd strapy/ - yarn start",
+  "main": "index.js",
+  "scripts": {
+    "frontend": "cd frontend && yarn dev",
+    "backend": "cd strapy && yarn start",
+    "dev": "concurrently \"yarn run backend\" \"yarn run frontend\"",
+    "build": "concurrently \"cd frontend && yarn build\" \"cd strapy && yarn build\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OlegKotsubko/strapi-next.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OlegKotsubko/strapi-next/issues"
+  },
+  "homepage": "https://github.com/OlegKotsubko/strapi-next#readme",
+  "devDependencies": {
+    "concurrently": "^6.0.0"
+  }
+}
