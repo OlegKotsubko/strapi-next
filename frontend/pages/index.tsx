@@ -1,22 +1,34 @@
 import Head from 'next/head'
-import { ReactElement } from 'react'
+import React, {ReactElement} from 'react'
+import Link from "next/link";
+
+import Pizzas from '@/components/Pizzas/Pizzas'
+import Logout from "@/components/Logout";
+
+import useUser from "hooks/useUser";
+
 import styles from '../styles/Home.module.scss'
-import Header from '@/components/Header/Header'
-import { Provider } from 'react-redux'
-import store from '../redux/store'
 
 export default function Index(): ReactElement {
+  const { isLoggedIn } = useUser()
   return (
-    <Provider store={store}>
-      <div className={styles.container}>
-        <Head>
-          <title>Create Next App</title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-        <main className={styles.main}>
-          <Header />
-        </main>
-      </div>
-    </Provider>
+    <div className={styles.container}>
+      <Head>
+        <title>Create Next App</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <main className={styles.main}>
+        <div>
+          <div style={{display: isLoggedIn ? 'none' : 'inline-block'}}>
+            <Link href={'/auth'}>Please login</Link>
+          </div>
+
+          <div style={{display: !isLoggedIn ? 'none' : 'inline-block'}}>
+            <Logout />
+          </div>
+        </div>
+        <Pizzas />
+      </main>
+    </div>
   )
 }

@@ -3,6 +3,6 @@ import pizzasSlice from '../reducers/pizzasSlice';
 
 export default configureStore({
   reducer: {
-    pizzas: pizzasSlice
+    pizzas: pizzasSlice,
   }
 })

@@ -1,10 +1,24 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import getConfig from "next/config";
+import {parseCookies} from 'nookies'
+const { publicRuntimeConfig } = getConfig()
 
 export const getPizzas: any = createAsyncThunk(
     'pizzas/getPizzas',
-    async () => {
-        const response = await fetch('http://localhost:1337/pizzas')
-        return await response.json()
+    async (_, { rejectWithValue }) => {
+        const cookies = parseCookies()
+        if(cookies.hasOwnProperty('jwt')) {
+          try {
+            const response = await fetch(`${publicRuntimeConfig.API_URL}/pizzas`, {
+              headers: {
+                Authorization: `Bearer ${cookies.jwt}`
+              }
+            })
+            return await response.json()
+          } catch (err) {
+            return rejectWithValue(err.response.data)
+          }
+        }
     }
 )
 
