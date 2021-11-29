@@ -1,8 +1,12 @@
+import {useEffect, useState} from 'react'
 import { parseCookies } from "nookies";
 
 const useUser = () => {
-  const cookies = parseCookies()
-  const isLoggedIn = !!cookies.jwt
+  const [isLoggedIn, setLoggedIn] = useState(false)
+  useEffect(() => {
+    const cookies = parseCookies()
+    setLoggedIn(!!cookies.jwt)
+  }, [])
   return {
     isLoggedIn
   }

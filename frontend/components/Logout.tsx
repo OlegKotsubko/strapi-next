@@ -7,8 +7,7 @@ export default function Logout(): ReactElement {
   const submitHandler = (e: any) => {
     e.preventDefault();
     destroyCookie(null, 'jwt')
-
-    route.push('/')
+    route.reload()
   }
   return (
     <a href="/" onClick={submitHandler}>Log out</a>

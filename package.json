@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "frontend": "cd frontend && yarn dev",
-    "backend": "cd strapy && yarn start",
+    "backend": "cd strapy && yarn develop",
     "dev": "concurrently \"yarn run backend\" \"yarn run frontend\"",
     "build": "concurrently \"cd frontend && yarn build\" \"cd strapy && yarn build\""
   },

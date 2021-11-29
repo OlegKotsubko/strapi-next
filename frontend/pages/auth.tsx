@@ -1,5 +1,5 @@
 import {ReactElement, ChangeEvent, useState} from 'react'
-import {setCookie} from 'nookies'
+import nookies from 'nookies'
 import getConfig from "next/config";
 import {useRouter} from "next/router";
 const { publicRuntimeConfig } = getConfig()
@@ -23,7 +23,7 @@ export default function Auth(): ReactElement {
     })
     const loginResponse = await login.json();
     if(!loginResponse.hasOwnProperty('error')){
-      setCookie(null, 'jwt', loginResponse.jwt, {
+      nookies.set(null, 'jwt', loginResponse.jwt, {
         maxAge: 30 * 24 * 60 * 60,
         path: '/'
       });
